@@ -7,7 +7,7 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://delicate-yeot-26445a.netlify.app",
+      "https://banking-trans.netlify.app",
       "https://incredible-dodol-9275fc.netlify.app",
     ],
     credentials: true,
