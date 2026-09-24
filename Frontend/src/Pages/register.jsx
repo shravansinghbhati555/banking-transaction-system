@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import "./Register.css";
+import api from "../services/api";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -30,15 +31,11 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.get(
-        `http://localhost:3000/api/transactions/${searchId.trim()}`,
-         
-      );
+      const response = await api.get(`/transactions/${searchId.trim()}`);
 
       navigate("/transactiondetails", {
         state: {
           transaction: response.data.transaction,
-           
         },
       });
     } catch (error) {
@@ -58,8 +55,8 @@ const Register = () => {
     try {
       setLoading(true);
 
-      const response = await axios.post(
-        "http://localhost:3000/api/auth/register",
+      const response = await api.post(
+        "/auth/register",
         {
           name: formData.name,
           email: formData.email,
@@ -123,7 +120,9 @@ const Register = () => {
               onChange={(e) => setSearchId(e.target.value)}
             />
 
-            <button onClick={transactionSearch} type="button">🔍 Search</button>
+            <button onClick={transactionSearch} type="button">
+              🔍 Search
+            </button>
           </div>
         </div>
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
+import api from "../services/api";
 
 function VerifyOTP() {
   const [otp, setOtp] = useState("");
@@ -20,13 +21,10 @@ function VerifyOTP() {
     try {
       setLoading(true);
 
-      const response = await axios.post(
-        "http://localhost:3000/api/auth/verify-otp",
-        {
-          email,
-          otp,
-        },
-      );
+      const response = await api.post("/auth/verify-otp", {
+        email,
+        otp,
+      });
 
       alert(response.data.message);
 
