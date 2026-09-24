@@ -1,10 +1,13 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://banking-transaction-system-9fbp.onrender.com",
+  baseURL: "https://banking-transaction-system-9fbp.onrender.com/api",
   withCredentials: true,
 });
-
+// const api = axios.create({
+//   baseURL: "http://localhost:3000/api",
+//   withCredentials: true,
+// });
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
@@ -17,7 +20,7 @@ api.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 export default api;
