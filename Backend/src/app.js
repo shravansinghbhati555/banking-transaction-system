@@ -1,31 +1,27 @@
- 
-const express = require("express")
-const cookieParser = require("cookie-parser")
-const cors = require("cors")
- 
+const express = require("express");
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
+const app = express();
 
-const app = express()
-
-app.use(cors({
-    origin: 
-        "https://banking-transaction-system-4uhy417o4-banking-transaction.vercel.app"
-    ,
+app.use(
+  cors({
+    origin: "https://banking-transaction-system-9fbp.onrender.com",
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"]
-}))
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+);
 
-
-app.use(express.json())
-app.use(cookieParser())
+app.use(express.json());
+app.use(cookieParser());
 
 /**
  * - Routes required
  */
-const authRouter = require("./routes/auth.routes")
-const accountRouter = require("./routes/account.routes")
-const transactionRoutes = require("./routes/transaction.routes")
+const authRouter = require("./routes/auth.routes");
+const accountRouter = require("./routes/account.routes");
+const transactionRoutes = require("./routes/transaction.routes");
 const adminRouter = require("./routes/admin.routes");
 
 /**
@@ -33,13 +29,12 @@ const adminRouter = require("./routes/admin.routes");
  */
 
 app.get("/", (req, res) => {
-    res.send("Ledger Service is up and running")
-})
+  res.send("Ledger Service is up and running");
+});
 
-app.use("/api/auth", authRouter)
-app.use("/api/accounts", accountRouter)
-app.use("/api/transactions", transactionRoutes)
+app.use("/api/auth", authRouter);
+app.use("/api/accounts", accountRouter);
+app.use("/api/transactions", transactionRoutes);
 app.use("/api/admin", adminRouter);
 
-
-module.exports = app
+module.exports = app;
