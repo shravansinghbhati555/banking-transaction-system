@@ -6,7 +6,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://banking-transaction-system-9fbp.onrender.com",
+    origin: "https://delicate-yeot-26445a.netlify.app",
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
