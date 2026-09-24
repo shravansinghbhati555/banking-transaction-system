@@ -6,7 +6,10 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://delicate-yeot-26445a.netlify.app",
+    origin: [
+      "https://delicate-yeot-26445a.netlify.app",
+      "https://incredible-dodol-9275fc.netlify.app",
+    ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
