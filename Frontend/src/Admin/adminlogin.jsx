@@ -36,6 +36,16 @@ function AdminLogin() {
 
       console.log("ADMIN LOGIN:", response.data);
 
+      const token = response.data.token
+      if(!token){
+        alert("Admin token not received")
+        return
+      }
+
+      localStorage.setItem("token", token)
+      console.log("Admin token saved", token);
+
+
       alert("Admin login successful");
 
       navigate("/admindashboard");

@@ -31,7 +31,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
 
         {/* Admin route */}
-        <Route path="/adminlogin" element={<AdminLogin />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/admindashboard" element={<AdminDashboard />} />
 
       </Routes>
